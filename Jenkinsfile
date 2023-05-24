@@ -51,7 +51,7 @@ pipeline {
             }
             steps {
                 sshagent(['ubuntulocalhost']) {
-                    sh "ssh -l $DEPLOY_USER $DEPLOY_HOST 'ansible-playbook -i pd-ansible/inventory/prod/hosts.yml --diff pd-ansible/playbooks/moviesstorageservice-swarm.yml --extra-vars \"mailservice_tag=$TAG_NAME\"'"
+                    sh "ssh -l $DEPLOY_USER $DEPLOY_HOST 'ansible-playbook -i pd-ansible/inventory/prod/hosts.yml --diff pd-ansible/playbooks/mailservice-swarm.yml --extra-vars \"mailservice_tag=$TAG_NAME\"'"
                 } 
             }
         }
@@ -61,7 +61,7 @@ pipeline {
             }
             steps {
                 sshagent(['ubuntulocalhost']) {
-                    sh "ssh -l $DEPLOY_USER $DEPLOY_HOST 'ansible-playbook -i pd-ansible/inventory/dev/hosts.yml --diff pd-ansible/playbooks/moviesstorageservice-swarm.yml --extra-vars \"mailservice_tag=dev-$BUILD_NUMBER\"'"
+                    sh "ssh -l $DEPLOY_USER $DEPLOY_HOST 'ansible-playbook -i pd-ansible/inventory/dev/hosts.yml --diff pd-ansible/playbooks/mailservice-swarm.yml --extra-vars \"mailservice_tag=dev-$BUILD_NUMBER\"'"
                 } 
             }
         }
